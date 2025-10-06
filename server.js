@@ -7,6 +7,7 @@ app.use(cors({
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization"]
 }));
+app.get("/", (req, res) => res.send("✅ Backend working and CORS enabled"));
 
 
 dotenv.config();
@@ -124,4 +125,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Server running at http://localhost:${PORT}`);
 });
+
 
