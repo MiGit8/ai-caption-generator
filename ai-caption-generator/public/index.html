@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Caption Generator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Image Caption Generator</h1>
+      <p class="subtitle">Upload an image, choose tone and language, and get 5 captions (~20 words each).</p>
+    </header>
+
+    <section class="card">
+      <label>Upload Image</label>
+      <div class="upload" id="uploadBox" tabindex="0">
+        <div id="uploadInner">
+          <svg width="42" height="42" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 16V4m0 0 4 4m-4-4-4 4" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M20 16.5a4.5 4.5 0 0 0-4.5-4.5h-7A4.5 4.5 0 0 0 4 16.5v0A4.5 4.5 0 0 0 8.5 21h7A4.5 4.5 0 0 0 20 16.5v0Z" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+          <div class="hint"><strong>Click to upload</strong> or drag & drop</div>
+          <small>PNG, JPG, GIF, HEIC</small>
+        </div>
+        <input type="file" id="fileInput" accept="image/*" />
+        <img id="previewImage" alt="Preview" />
+        <button class="remove-btn" id="removeBtn" title="Remove image">✕</button>
+      </div>
+
+      <div class="controls">
+        <div>
+          <label>Select Tone</label>
+          <select id="tone">
+            <option value="fun">Fun 🎉</option>
+            <option value="accurate">Accurate (for blog captions)</option>
+            <option value="alt">Alt Text</option>
+            <option value="filename">Filename (like-this-example-image-name)</option>
+            <option value="joke">Joke 🤪</option>
+            <option value="serious">Serious 😶</option>
+            <option value="happy">Happy 😊</option>
+            <option value="formal">Formal 🧑‍💼</option>
+            <option value="professional">Professional 💼</option>
+            <option value="sad">Sad 😔</option>
+            <option value="excited">Excited 🤩</option>
+            <option value="romantic">Romantic 💖</option>
+            <option value="inspirational">Inspirational 💡</option>
+            <option value="mysterious">Mysterious 🕵️</option>
+            <option value="adventurous">Adventurous 🧭</option>
+            <option value="relaxed">Relaxed 🧘</option>
+            <option value="sarcastic">Sarcastic 🙃</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Select Language</label>
+          <select id="language">
+            <option value="English (US)">English (US)</option>
+            <option value="English (UK)">English (UK)</option>
+            <option value="Chinese (Simplified)">Chinese (Simplified)</option>
+            <option value="Spanish (Spain)">Spanish (Spain)</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Arabic">Arabic</option>
+            <option value="Bengali">Bengali</option>
+            <option value="Portuguese (Portugal)">Portuguese (Portugal)</option>
+            <option value="Russian">Russian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="German">German</option>
+            <option value="French">French</option>
+            <option value="Italian">Italian</option>
+            <option value="Turkish">Turkish</option>
+            <option value="Vietnamese">Vietnamese</option>
+            <option value="Indonesian">Indonesian</option>
+            <option value="Thai">Thai</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Additional Info</label>
+        <input type="text" id="extra" placeholder="example: the photo is a picture of the MET in NYC" />
+      </div>
+
+      <button class="btn btn-primary" id="generateBtn">
+        <span class="btn-label">Generate Captions</span>
+        <span class="spinner" aria-hidden="true"></span>
+      </button>
+
+      <div class="results" id="results"></div>
+    </section>
+
+    <footer>Running on the same Express server • Accent color: Sky Blue 💙</footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
